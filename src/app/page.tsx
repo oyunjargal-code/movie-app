@@ -1,5 +1,10 @@
-import { Movie } from "@/_components/Movie";
+import { Header, Movie } from "@/_components";
 
 export default function Home() {
-  return <Movie />;
+  return (
+    <div>
+      <Header />
+      <Movie />
+    </div>
+  );
 }
