@@ -1,12 +1,21 @@
 import { Button } from "@/components/ui/button";
 
-export const DescriptionText = () => {
+type DescriptionTextType = {
+  name: string;
+  rating: number;
+  desc: string;
+};
+export const DescriptionTextPhone = ({
+  name,
+  rating,
+  desc,
+}: DescriptionTextType) => {
   return (
-    <div className="md:top-1/2 md:left-1/12 md:w-100 md:absolute z-10  md:text-white">
+    <div className="block sm:hidden md:top-1/2 md:left-1/12 md:w-100 md:absolute z-10  md:text-white">
       <div className="flex md:flex-col justify-between p-2">
         <div>
           <p className="text-sm">Now Playing:</p>
-          <p className="text-2xl">Wicked</p>
+          <p className="text-2xl">{name}</p>
         </div>
         <div className="flex gap-2">
           <img
@@ -16,22 +25,17 @@ h-[22.19px] flex"
             alt="Star"
           />
           <div className="flex">
-            <p className="text-base">6.9</p>
+            <p className="text-base">{rating}</p>
             <p className="text-base text-[#71717A]">/10</p>
           </div>
         </div>
       </div>
       <div>
-        <p className="p-2 h-fit">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel sint
-          quae quidem! Voluptas suscipit totam iusto dolorem earum rem
-          laudantium accusamus voluptate deserunt, corrupti neque unde in ipsa
-          dolores optio!
-        </p>
+        <p className="p-2 h-fit">{desc}</p>
       </div>
       <div className="ml-2">
         <Button>
-          <img className="w-4 h-4" src="./play.svg" alt="play" /> Watch Trailer
+          <img src="./play.svg" alt="play" /> Watch Trailer
         </Button>
       </div>
     </div>

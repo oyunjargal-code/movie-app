@@ -4,7 +4,38 @@ type MovieCardProps = {
   img: string;
   rating: number;
   name: string;
+  id: number;
 };
+const movieCards = [
+  {
+    id: 1,
+    name: "Titanic",
+    rating: 1,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL94Dz7To4p6R3AVyLsyaPcZK5iQqNS29NkA&s",
+  },
+  {
+    id: 2,
+    name: "Harry Potter",
+    rating: 2,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsCiAXswOiFuucVXOTeqw95qWU7YEVEKS4qw&s",
+  },
+  {
+    id: 3,
+    name: "Wonder",
+    rating: 3,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8gUxvBM0BaRU5q1qN0tbVSHhmtXi7A7Ea3A&s",
+  },
+  {
+    id: 4,
+    name: "Wonder",
+    rating: 4,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8gUxvBM0BaRU5q1qN0tbVSHhmtXi7A7Ea3A&s",
+  },
+];
 
 export const MovieCard = (props: MovieCardProps) => {
   const { img, rating, name } = props;

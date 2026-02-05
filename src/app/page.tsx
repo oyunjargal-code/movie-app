@@ -1,9 +1,12 @@
 "use client";
-import { Header, MovieDescription } from "@/_components";
-import { Foother } from "@/_components/Foother";
-import { Popular } from "@/_components/Popular";
-import { TopRated } from "@/_components/TopRated";
-import { Upcoming } from "@/_components/Upcoming";
+import {
+  Foother,
+  Header,
+  MovieDescription,
+  Popular,
+  TopRated,
+  Upcoming,
+} from "@/_components";
 
 export default function Home() {
   return (

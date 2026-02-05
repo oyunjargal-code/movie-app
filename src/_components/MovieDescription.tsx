@@ -10,31 +10,35 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { DescriptionText } from "./DescriptionText";
+import { DescriptionTextPhone } from "./DescriptionTextPhone";
 import { Upcoming } from "./Upcoming";
 import Autoplay from "embla-carousel-autoplay";
+import { DescriptionTextDesktop } from "./DescriptionTextDesktop";
 
 const discriptions = [
   {
     id: 1,
     name: "Wicked",
     rating: 5,
-    desc: "Lorem",
-    img: "https://trippystore.com/cdn/shop/products/posters-star-wars-characters-wide-poster-102395-31389138976821.jpg?v=1648751279&width=1346",
+    desc: "Lorem Wicked Lorem Wicked Lorem Wicked Lorem Wicked Lorem Wicked Lorem Wicked Lorem Wicked",
+    image:
+      "https://trippystore.com/cdn/shop/products/posters-star-wars-characters-wide-poster-102395-31389138976821.jpg?v=1648751279&width=1346",
   },
   {
     id: 2,
     name: "Interstellar",
     rating: 1,
-    desc: "Lorem",
-    img: "https://original.fontsinuse.com/fontsinuse.com/use-images/26/26616/26616.jpeg",
+    desc: "Interstellar Lorem Interstellar Lorem Interstellar Lorem Interstellar Lorem Interstellar Lorem Interstellar Lorem Interstellar Lorem",
+    image:
+      "https://original.fontsinuse.com/fontsinuse.com/use-images/26/26616/26616.jpeg",
   },
   {
     id: 3,
-    name: "Interstellar",
+    name: "Lord of the Rings",
     rating: 8,
-    desc: "Lord of the Rings",
-    img: "https://static.posters.cz/image/350/lord-of-the-rings-trilogy-i133047.jpg",
+    desc: "Lord of the Rings Lord of the Rings Lord of the Rings Lord of the Rings Lord of the Rings Lord of the Rings Lord of the Rings",
+    image:
+      "https://static.posters.cz/image/350/lord-of-the-rings-trilogy-i133047.jpg",
   },
 ];
 
@@ -55,10 +59,19 @@ export const MovieDescription = () => {
             return (
               <CarouselItem key={item.id} className="w-full relative">
                 <div
-                  className="w-full h-150 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${item.img})` }}
+                  className="w-full h-75 md:h-150 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${item.image})` }}
                 ></div>
-                <DescriptionText />
+                <DescriptionTextPhone
+                  name={item.name}
+                  rating={item.rating}
+                  desc={item.desc}
+                />
+                <DescriptionTextDesktop
+                  name={item.name}
+                  rating={item.rating}
+                  desc={item.desc}
+                />
               </CarouselItem>
             );
           })}
