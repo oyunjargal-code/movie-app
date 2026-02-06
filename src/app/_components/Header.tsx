@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Moon, Search, ChevronDown } from "lucide-react";
+import { Moon, Search, ChevronDown, Film } from "lucide-react";
 
 import {
   InputGroup,
@@ -12,8 +12,17 @@ export const Header = () => {
   return (
     <div className="w-full h-fit flex justify-between p-6 max-w-[1440px]">
       <div className="flex gap-2 p-2">
-        <img className="w-5 h-5" src="./filmLigth.svg" alt="Film" />
-        <img className="w-16 h-5" src="./Movie Z.svg" alt="Movie Z" />
+        <Film className="w-5 h-5" />
+        <img
+          className="dark:hidden w-16 h-5"
+          src="./Movie Z.svg"
+          alt="Movie Z"
+        />
+        <img
+          className="hidden dark:block w-16 h-5"
+          src="./Movie ZLigth.svg"
+          alt="Movie Z"
+        />
       </div>
 
       <div className="hidden lg:flex gap-2 ">
