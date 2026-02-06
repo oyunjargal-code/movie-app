@@ -6,6 +6,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 export const Header = () => {
   return (
@@ -29,9 +30,7 @@ export const Header = () => {
         </InputGroup>
       </div>
       <div className="flex gap-2">
-        <Button variant="outline">
-          <Moon />
-        </Button>
+        <ModeToggle />
         <Button variant="outline" className="lg:hidden">
           <Search />
         </Button>

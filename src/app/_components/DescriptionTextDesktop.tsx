@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Play } from "lucide-react";
 type DescriptionTextType = {
   name: string;
   rating: number;
@@ -33,8 +34,9 @@ h-[22.19px] flex"
         <p className="p-2 h-fit">{desc}</p>
       </div>
       <div className="ml-2 text-black">
-        <Button className="text-black" variant={"outline"}>
-          <img src="./playBlack.svg" alt="play" /> Watch Trailer
+        <Button>
+          <Play />
+          Watch Trailer
         </Button>
       </div>
     </div>

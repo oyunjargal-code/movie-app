@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Play } from "lucide-react";
 
 type DescriptionTextType = {
   name: string;
@@ -35,7 +36,8 @@ h-[22.19px] flex"
       </div>
       <div className="ml-2">
         <Button>
-          <img src="./play.svg" alt="play" /> Watch Trailer
+          <Play />
+          Watch Trailer
         </Button>
       </div>
     </div>
