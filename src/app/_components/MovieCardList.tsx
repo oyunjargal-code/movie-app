@@ -35,6 +35,40 @@ const movieCards = [
     rating: 5,
     image: "https://i.ebayimg.com/images/g/UgcAAOSwdm9mDfNe/s-l1600.webp",
   },
+  {
+    id: 6,
+    name: "Titanic",
+    rating: 1,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL94Dz7To4p6R3AVyLsyaPcZK5iQqNS29NkA&s",
+  },
+  {
+    id: 7,
+    name: "Harry Potter",
+    rating: 2,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsCiAXswOiFuucVXOTeqw95qWU7YEVEKS4qw&s",
+  },
+  {
+    id: 8,
+    name: "Wonder",
+    rating: 3,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8gUxvBM0BaRU5q1qN0tbVSHhmtXi7A7Ea3A&s",
+  },
+  {
+    id: 9,
+    name: "Avatar",
+    rating: 4,
+    image:
+      "https://m.media-amazon.com/images/I/81N2Jxv26XL._AC_UF894,1000_QL80_.jpg",
+  },
+  {
+    id: 10,
+    name: "Lucie",
+    rating: 5,
+    image: "https://i.ebayimg.com/images/g/UgcAAOSwdm9mDfNe/s-l1600.webp",
+  },
 ];
 
 export const MovieCardList = () => {
