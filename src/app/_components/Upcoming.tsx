@@ -5,10 +5,13 @@ import Link from "next/link";
 // import { useRouter } from "next/navigation";
 // import { MovieCardList } from "./MovieCardList";
 import { getPopularMovies, getUpcomingMovies } from "@/lib/api";
-export const Upcoming = async () => {
-  const data = await getUpcomingMovies();
-  console.log(data);
-  // const router = useRouter();
+import { Movie, Response } from "@/lib/types";
+type UpcomingProps = {
+  movies: Movie[];
+};
+
+export const Upcoming = async ({ movies }: UpcomingProps) => {
+  console.log({ movies });
   return (
     <div>
       <div className="flex justify-between m-2">
@@ -21,12 +24,13 @@ export const Upcoming = async () => {
         </Link>
       </div>
       <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
-        {data.results.slice(0, 10).map((movie) => {
+        {movies.slice(0, 10).map((movie) => {
           return (
             <MovieCard
               key={movie.id}
               name={movie.title}
               rating={movie.vote_average}
+              img={movie.poster_path}
             />
           );
         })}

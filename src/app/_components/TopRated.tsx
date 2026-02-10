@@ -25,6 +25,7 @@ export const TopRated = async () => {
               key={movie.id}
               name={movie.title}
               rating={movie.vote_average}
+              img={movie.poster_path}
             />
           );
         })}

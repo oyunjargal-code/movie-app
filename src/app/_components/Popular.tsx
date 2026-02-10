@@ -4,10 +4,13 @@ import { MovieCard } from "./MovieCard";
 import Link from "next/link";
 // import { MovieCardList } from "./MovieCardList";
 import { getPopularMovies } from "@/lib/api";
-export const Popular = async () => {
-  const data = await getPopularMovies();
-  console.log(data);
+import { Movie } from "@/lib/types";
 
+type PopularProps = {
+  movies: Movie[];
+};
+
+export const Popular = async ({ movies }: PopularProps) => {
   return (
     <div>
       <div className="flex justify-between m-2">
@@ -19,12 +22,13 @@ export const Popular = async () => {
         </Link>
       </div>
       <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
-        {data.results.slice(0, 10).map((movie) => {
+        {movies.slice(0, 10).map((movie) => {
           return (
             <MovieCard
               key={movie.id}
               name={movie.title}
               rating={movie.vote_average}
+              img={movie.poster_path}
             />
           );
         })}

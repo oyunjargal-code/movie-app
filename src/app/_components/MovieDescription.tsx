@@ -15,38 +15,17 @@ import { DescriptionTextPhone } from "./DescriptionTextPhone";
 import { Upcoming } from "./Upcoming";
 import Autoplay from "embla-carousel-autoplay";
 import { DescriptionTextDesktop } from "./DescriptionTextDesktop";
+import { Movie } from "@/lib/types";
 
-const discriptions = [
-  {
-    id: 1,
-    name: "Wicked",
-    rating: 5,
-    desc: "Lorem Wicked Lorem Wicked Lorem Wicked Lorem Wicked Lorem Wicked Lorem Wicked Lorem Wicked",
-    image:
-      "https://trippystore.com/cdn/shop/products/posters-star-wars-characters-wide-poster-102395-31389138976821.jpg?v=1648751279&width=1346",
-  },
-  {
-    id: 2,
-    name: "Interstellar",
-    rating: 1,
-    desc: "Interstellar Lorem Interstellar Lorem Interstellar Lorem Interstellar Lorem Interstellar Lorem Interstellar Lorem Interstellar Lorem",
-    image:
-      "https://original.fontsinuse.com/fontsinuse.com/use-images/26/26616/26616.jpeg",
-  },
-  {
-    id: 3,
-    name: "Lord of the Rings",
-    rating: 8,
-    desc: "Lord of the Rings Lord of the Rings Lord of the Rings Lord of the Rings Lord of the Rings Lord of the Rings Lord of the Rings",
-    image:
-      "https://static.posters.cz/image/350/lord-of-the-rings-trilogy-i133047.jpg",
-  },
-];
+type PopularProps = {
+  movies: Movie[];
+};
 
-export const MovieDescription = () => {
+export const MovieDescription = ({ movies }: PopularProps) => {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true }),
   );
+  console.log(movies);
   return (
     <div className="w-full">
       <Carousel
@@ -56,22 +35,23 @@ export const MovieDescription = () => {
         onMouseLeave={plugin.current.reset}
       >
         <CarouselContent>
-          {discriptions.map((item, index) => {
+          {movies.slice(0, 3).map((movie) => {
             return (
-              <CarouselItem key={item.id} className="w-full relative">
-                <div
+              <CarouselItem key={movie.id} className="w-full relative">
+                <img
                   className="w-full h-75 md:h-150 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${item.image})` }}
-                ></div>
+                  src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                  alt=""
+                />
                 <DescriptionTextPhone
-                  name={item.name}
-                  rating={item.rating}
-                  desc={item.desc}
+                  name={movie.title}
+                  rating={movie.vote_average}
+                  desc={movie.overview}
                 />
                 <DescriptionTextDesktop
-                  name={item.name}
-                  rating={item.rating}
-                  desc={item.desc}
+                  name={movie.title}
+                  rating={movie.vote_average}
+                  desc={movie.overview}
                 />
               </CarouselItem>
             );

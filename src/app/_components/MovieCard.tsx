@@ -1,20 +1,20 @@
 import { Star } from "lucide-react";
 
 type MovieCardType = {
-  // img: string;
+  img: string;
   rating: number;
   name: string;
   // id: number;
 };
 
-export const MovieCard = ({ rating, name }: MovieCardType) => {
+export const MovieCard = ({ img, rating, name }: MovieCardType) => {
   return (
     <div className="w-full dark:text-black">
-      {/* <img
-        src={img}
+      <img
+        src={`https://image.tmdb.org/t/p/w500${img}`}
         alt={name}
         className="w-full h-75 md:h-87.5 rounded-t-lg"
-      /> */}
+      />
       <div className="w-full bg-[#F4F4F5] h-21 rounded-b-lg flex flex-col">
         <div className="  flex gap-1 p-2">
           <Star className="w-5 h-5 text-[#FDE047] fill-[#FDE047]" />
