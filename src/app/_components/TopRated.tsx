@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { MovieCard } from "./MovieCard";
 import Link from "next/link";
 import { getTopRatedMovies } from "@/lib/api";
-// import { MovieCardList } from "./MovieCardList";
 
 export const TopRated = async () => {
   const data = await getTopRatedMovies();
@@ -29,9 +28,6 @@ export const TopRated = async () => {
             />
           );
         })}
-      </div>
-      <div>
-        <div>{/* <MovieCardList /> */}</div>
       </div>
     </div>
   );

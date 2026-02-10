@@ -10,7 +10,7 @@ import { ModeToggle } from "@/components/ui/mode-toggle";
 
 export const Header = () => {
   return (
-    <div className="w-full h-fit flex justify-between p-6 max-w-[1440px]">
+    <div className="w-full h-fit flex justify-between p-6 max-w-360">
       <div className="flex gap-2 p-2">
         <Film className="w-5 h-5" />
         <img

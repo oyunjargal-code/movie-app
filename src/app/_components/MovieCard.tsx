@@ -24,7 +24,6 @@ export const MovieCard = ({ img, rating, name }: MovieCardType) => {
         <div className=" bottom-2 left-2.5">
           <h3 className="text-xl p-2 ">{name}</h3>
         </div>
-        {/* <div>{desc}</div> */}
       </div>
     </div>
   );

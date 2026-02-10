@@ -2,8 +2,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { MovieCard } from "./MovieCard";
 import Link from "next/link";
-// import { useRouter } from "next/navigation";
-// import { MovieCardList } from "./MovieCardList";
 import { getPopularMovies, getUpcomingMovies } from "@/lib/api";
 import { Movie, Response } from "@/lib/types";
 type UpcomingProps = {
@@ -35,12 +33,6 @@ export const Upcoming = async ({ movies }: UpcomingProps) => {
           );
         })}
       </div>
-
-      {/* <div>
-        <div>
-          <MovieCardList />
-        </div>
-      </div> */}
     </div>
   );
 };

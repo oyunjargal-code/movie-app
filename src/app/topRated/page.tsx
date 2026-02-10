@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { MovieCard } from "@/app/_components";
 import Link from "next/link";
-// import { MovieCardList } from "@/app/_components/MovieCardList";
 
 export default function TopRated() {
   return (
@@ -16,9 +15,6 @@ export default function TopRated() {
         </Link>
 
         <h1>Top Rated</h1>
-      </div>
-      <div>
-        <div>{/* <MovieCardList /> */}</div>
       </div>
     </div>
   );

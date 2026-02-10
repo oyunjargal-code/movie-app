@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { MovieCard } from "./MovieCard";
 import Link from "next/link";
-// import { MovieCardList } from "./MovieCardList";
+
 import { getPopularMovies } from "@/lib/api";
 import { Movie } from "@/lib/types";
 
@@ -32,9 +32,6 @@ export const Popular = async ({ movies }: PopularProps) => {
             />
           );
         })}
-        {/* <div className=" mx-auto gap-2">
-          <MovieCardList />
-        </div> */}
       </div>
     </div>
   );
