@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { MovieCard } from "./MovieCard";
 import Link from "next/link";
 
 import { getPopularMovies } from "@/lib/api";
 import { Movie } from "@/lib/types";
+import { Button } from "@/components/ui/button";
 
 type PopularProps = {
   movies: Movie[];

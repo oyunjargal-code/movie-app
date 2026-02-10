@@ -3,14 +3,17 @@ import { ArrowRight } from "lucide-react";
 import { MovieCard } from "./MovieCard";
 import Link from "next/link";
 import { getTopRatedMovies } from "@/lib/api";
+import { Movie } from "@/lib/types";
 
-export const TopRated = async () => {
-  const data = await getTopRatedMovies();
+type TopRatedProps = {
+  movies: Movie[];
+};
 
+export const TopRated = async ({ movies }: TopRatedProps) => {
   return (
     <div>
       <div className="flex justify-between m-2">
-        <h1>Top Rated</h1>
+        <h1 className="m-2 bold">Top Rated</h1>
         <Link href="/topRated">
           <Button variant={"outline"}>
             See more <ArrowRight />
@@ -18,7 +21,7 @@ export const TopRated = async () => {
         </Link>
       </div>
       <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
-        {data.results.slice(0, 10).map((movie) => {
+        {movies.slice(0, 10).map((movie) => {
           return (
             <MovieCard
               key={movie.id}

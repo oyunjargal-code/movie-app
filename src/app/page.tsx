@@ -7,12 +7,17 @@ import {
   Upcoming,
   MovieCard,
 } from "@/app/_components";
-import { getPopularMovies, getUpcomingMovies } from "@/lib/api";
+import {
+  getPopularMovies,
+  getTopRatedMovies,
+  getUpcomingMovies,
+} from "@/lib/api";
 import Link from "next/link";
 
 const Home = async () => {
   const { results: popular } = await getPopularMovies();
   const { results: upComing } = await getUpcomingMovies();
+  const { results: topRated } = await getTopRatedMovies();
 
   return (
     <div className="flex flex-col gap-6 items-center justify-center xl:mx-auto">
@@ -21,7 +26,7 @@ const Home = async () => {
       <MovieDescription movies={popular} />
 
       <Upcoming movies={upComing} />
-      <TopRated />
+      <TopRated movies={topRated} />
       <Popular movies={popular} />
 
       <Foother />
