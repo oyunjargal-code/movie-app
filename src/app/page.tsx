@@ -1,4 +1,3 @@
-"use client";
 import {
   Foother,
   Header,
@@ -8,20 +7,25 @@ import {
   Upcoming,
   MovieCard,
 } from "@/app/_components";
+import { getPopularMovies, getUpcomingMovies } from "@/lib/api";
 import Link from "next/link";
 
-export default function Home() {
+const Home = async () => {
+  const { results: popular } = await getPopularMovies();
+  const { results: upComing } = await getUpcomingMovies();
+
   return (
     <div className="flex flex-col gap-6 items-center justify-center xl:mx-auto">
       <Header />
 
       <MovieDescription />
 
-      <Upcoming />
+      <Upcoming movies={upComing} />
       <TopRated />
-      <Popular />
+      <Popular movies={popular} />
 
       <Foother />
     </div>
   );
-}
+};
+export default Home;

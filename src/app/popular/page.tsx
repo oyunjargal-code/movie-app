@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { MovieCard } from "@/app/_components";
 import Link from "next/link";
-import { MovieCardList } from "@/app/_components/MovieCardList";
+// import { MovieCardList } from "@/app/_components/MovieCardList";
 
 export default function Popular() {
   return (
@@ -18,9 +18,7 @@ export default function Popular() {
         <h1>Popular</h1>
       </div>
       <div>
-        <div>
-          <MovieCardList />
-        </div>
+        <div>{/* <MovieCardList /> */}</div>
       </div>
     </div>
   );
