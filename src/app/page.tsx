@@ -28,7 +28,7 @@ const Home = async () => {
       <TopRated movies={topRated} />
       <Popular movies={popular} />
 
-      <Foother />
+     
     </div>
   );
 };

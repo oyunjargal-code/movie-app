@@ -7,8 +7,10 @@ const popularUrl = "/movie/popular?language=en-US&page=1";
 const upcomingUrl = "/movie/upcoming?language=en-US&page=1";
 const topRatedUrl = "/movie/top_rated?language=en-US&page=1";
 
-const token = process.env.TOKEN;
-console.log("Token ni:", token);
+const token= ""
+
+// const token = process.env.TOKEN;
+// console.log("Token ni:", token);
 
 const options = {
   method: "GET",

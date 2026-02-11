@@ -2,8 +2,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { MovieCard } from "./MovieCard";
 import Link from "next/link";
-import { getPopularMovies, getUpcomingMovies } from "@/lib/api";
-import { Movie, Response } from "@/lib/types";
+import { getUpcomingMovies } from "@/lib/api";
+import { Movie } from "@/lib/types";
+
 type UpcomingProps = {
   movies: Movie[];
 };
