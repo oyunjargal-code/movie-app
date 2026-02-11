@@ -1,9 +1,7 @@
-"use client";
-
 import { MovieCard } from "@/app/_components";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { useRouter } from "next/router";
+
 import Link from "next/link";
 import { getUpcomingMovies } from "@/lib/api";
 const UpcomingPage = async () => {

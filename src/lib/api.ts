@@ -1,13 +1,13 @@
 import { Response } from "./types";
-
-const baseUrl =
-  "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+import dotenv from "dotenv";
+dotenv.config({ path: "src/.env" });
+const baseUrl = "https://api.themoviedb.org/3";
 
 const popularUrl = "/movie/popular?language=en-US&page=1";
 const upcomingUrl = "/movie/upcoming?language=en-US&page=1";
 const topRatedUrl = "/movie/top_rated?language=en-US&page=1";
 
-const token = "";
+const token = process.env.TOKEN;
 
 const options = {
   method: "GET",

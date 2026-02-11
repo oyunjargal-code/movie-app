@@ -18,6 +18,7 @@ const Home = async () => {
   const { results: popular } = await getPopularMovies();
   const { results: upComing } = await getUpcomingMovies();
   const { results: topRated } = await getTopRatedMovies();
+  console.log("Popular:", { popular });
 
   return (
     <div className="flex flex-col gap-6 items-center justify-center xl:mx-auto">
