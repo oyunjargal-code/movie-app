@@ -14,14 +14,13 @@ export const Upcoming = async ({ movies }: UpcomingProps) => {
     <div>
       <div className="flex justify-between m-2">
         <h1 className="m-2 bold">Upcoming</h1>
-
         <Link href="/upcoming1">
           <Button variant={"outline"}>
             See more <ArrowRight />
           </Button>
         </Link>
       </div>
-      <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
+      <div className="gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
         {movies.slice(0, 10).map((movie) => {
           return (
             <MovieCard

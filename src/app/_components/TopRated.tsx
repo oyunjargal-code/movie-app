@@ -20,7 +20,7 @@ export const TopRated = async ({ movies }: TopRatedProps) => {
           </Button>
         </Link>
       </div>
-      <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
+      <div className="gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
         {movies.slice(0, 10).map((movie) => {
           return (
             <MovieCard
