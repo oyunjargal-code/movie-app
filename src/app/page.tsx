@@ -22,8 +22,6 @@ const Home = async () => {
 
   return (
     <div className="flex flex-col gap-6 items-center justify-center xl:mx-auto">
-      <Header />
-
       <MovieDescription movies={popular} />
 
       <Upcoming movies={upComing} />

@@ -14,7 +14,7 @@ export const Upcoming = async ({ movies }: UpcomingProps) => {
     <div>
       <div className="flex justify-between m-2">
         <h1 className="m-2 bold">Upcoming</h1>
-        <Link href="/upcoming1">
+        <Link href="/upcoming">
           <Button variant={"outline"}>
             See more <ArrowRight />
           </Button>

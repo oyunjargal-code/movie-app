@@ -9,7 +9,7 @@ type MovieCardType = {
 
 export const MovieCard = ({ img, rating, name }: MovieCardType) => {
   return (
-    <div className="w-full dark:text-black">
+    <div className="w-55 dark:text-black">
       <img
         src={`https://image.tmdb.org/t/p/w500${img}`}
         alt={name}
@@ -22,7 +22,7 @@ export const MovieCard = ({ img, rating, name }: MovieCardType) => {
         </div>
 
         <div className=" bottom-2 left-2.5">
-          <h3 className="text-xl p-2 ">{name}</h3>
+          <h3 className="text-xl p-2 truncate">{name}</h3>
         </div>
       </div>
     </div>
