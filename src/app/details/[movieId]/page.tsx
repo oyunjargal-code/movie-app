@@ -1,4 +1,5 @@
 import { MovieCard } from "@/app/_components";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { details, getMovieCredits } from "@/lib/api";
 import { Crew } from "@/lib/types";
@@ -17,7 +18,11 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
   const imgBaseUrl = "https://image.tmdb.org/t/p/original";
 
   const credits = await getMovieCredits(movieId);
-  console.log("credits:", credits);
+  console.log({ movie });
+  const writer = credits.crew
+    .filter((person) => person.job === "Writer")
+    .map((person) => person.name);
+  console.log("writer:", writer);
 
   return (
     <div>
@@ -56,21 +61,14 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
           />
         </div>
         <div className="gap-2 p-2">
-          <Button className="m-2 rounded-sm" variant={"outline"}>
-            Fairy Tale
-          </Button>
-          <Button className="m-2 rounded-sm" variant={"outline"}>
-            Pop Musical
-          </Button>
-          <Button className="m-2 rounded-sm" variant={"outline"}>
-            Fantasy
-          </Button>
-          <Button className="m-2 rounded-sm" variant={"outline"}>
-            Musical
-          </Button>
-          <Button className="m-2 rounded-sm" variant={"outline"}>
-            Romance
-          </Button>
+          <div className="flex gap-2 p-2">
+            {movie.genres.map((genre) => (
+              <Badge variant={"secondary"} key={genre.id}>
+                {genre.name}
+              </Badge>
+            ))}
+          </div>
+
           <p>{movie.overview}</p>
         </div>
       </div>
@@ -86,7 +84,11 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
         </div>
         <div className="grid grid-cols-2 m-2">
           <h3 className="font-bold">Writers</h3>
-          <p>{movie.overview}</p>
+          <div>
+            {credits.crew
+              .filter((person) => person.job === "Writer")
+              .map((person) => person.name)}
+          </div>
         </div>
         <div className="grid grid-cols-2 m-2">
           <h3 className="font-bold">Stars</h3>
