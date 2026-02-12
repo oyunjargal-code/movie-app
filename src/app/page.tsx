@@ -25,10 +25,8 @@ const Home = async () => {
       <MovieDescription movies={popular} />
 
       <Upcoming movies={upComing} />
-      <TopRated movies={topRated} />
       <Popular movies={popular} />
-
-     
+      <TopRated movies={topRated} />
     </div>
   );
 };

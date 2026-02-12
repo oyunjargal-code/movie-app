@@ -1,13 +1,24 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { MovieCard } from "@/app/_components";
 import Link from "next/link";
 import { Movie } from "@/lib/types";
 import { getPopularMovies } from "@/lib/api";
+import { useEffect, useState } from "react";
 
-const PopularPage = async () => {
-  const data = await getPopularMovies();
-  const movies = data.results;
+const PopularPage = () => {
+  const [movies, setMovies] = useState<Movie[]>([]);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const { results } = await getPopularMovies();
+
+      setMovies(results);
+    };
+
+    fetchMovies();
+  }, []);
   return (
     <div>
       <div className="flex justify-between m-2 p-10">

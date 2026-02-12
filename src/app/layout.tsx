@@ -35,10 +35,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="max-w-360 mx-auto">
-            <Header />
+          <div>
+            <div className="max-w-360 mx-auto">
+              <Header />
+            </div>
+
             {children}
-             <Foother />
+            <Foother />
           </div>
         </ThemeProvider>
       </body>
