@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Moon, Search, ChevronDown, Film } from "lucide-react";
 
@@ -7,8 +8,15 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { ModeToggle } from "@/components/ui/mode-toggle";
+import { ChangeEventHandler, useState } from "react";
 
 export const Header = () => {
+  const [searchValue, setSearchValue] = useState("");
+
+  const onChangeSearchValue: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setSearchValue(e.target.value);
+  };
+
   return (
     <div className="w-full h-fit flex justify-between p-6 max-w-360">
       <div className="flex gap-2 p-2">
@@ -25,7 +33,12 @@ export const Header = () => {
         </Button>
 
         <InputGroup className="max-w-xs">
-          <InputGroupInput placeholder="Search..." className="w-95" />
+          <InputGroupInput
+            value={searchValue}
+            onChange={onChangeSearchValue}
+            placeholder="Search..."
+            className="w-95"
+          />
           <InputGroupAddon>
             <Search />
           </InputGroupAddon>
