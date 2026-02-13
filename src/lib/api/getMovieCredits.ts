@@ -5,7 +5,7 @@ export const getMovieCredits = async (movieId: string): Promise<Credits> => {
   // const respose = await fetch(`${baseUrl}/movie/${movieId}/credits`, options);
 
   const respose = await fetch(
-    `${process.env.baseUrl}/movie/${movieId}/credits?language=en-US`,
+    `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`,
     options,
   );
 

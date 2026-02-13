@@ -8,14 +8,34 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { ModeToggle } from "@/components/ui/mode-toggle";
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, use, useEffect, useState } from "react";
+import { searchMovies } from "@/lib/api/searchMovies";
+import { Movie } from "@/lib/types";
 
 export const Header = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [movies, setMovies] = useState<Movie[]>([]);
+
+  console.log({ searchValue });
 
   const onChangeSearchValue: ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearchValue(e.target.value);
   };
+
+  useEffect(() => {
+    if (searchValue === "") {
+      setMovies([]);
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      const data = await searchMovies(searchValue);
+      console.log({ data });
+
+      setMovies(data.results);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [searchValue]);
 
   return (
     <div className="w-full h-fit flex justify-between p-6 max-w-360">
@@ -50,6 +70,9 @@ export const Header = () => {
           <Search />
         </Button>
       </div>
+      {movies.map((movie) => (
+        <h1 key={movie.id}>{movie.title}</h1>
+      ))}
     </div>
   );
 };

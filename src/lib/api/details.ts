@@ -3,7 +3,7 @@ import { options } from "./index";
 
 export const details = async (movieId: string): Promise<MovieDetails> => {
   const respose = await fetch(
-    `${process.env.baseUrl}/movie/${movieId}?language=en-US`,
+    `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
     options,
   );
   const data = await respose.json();
