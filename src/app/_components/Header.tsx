@@ -45,34 +45,39 @@ export const Header = () => {
           Movie Z
         </p>
       </div>
-
-      <div className="hidden lg:flex gap-2 ">
-        <Button variant="outline">
-          <ChevronDown />
-          Genre
-        </Button>
-
-        <InputGroup className="max-w-xs">
-          <InputGroupInput
-            value={searchValue}
-            onChange={onChangeSearchValue}
-            placeholder="Search..."
-            className="w-95"
-          />
-          <InputGroupAddon>
-            <Search />
-          </InputGroupAddon>
-        </InputGroup>
+      <div>
+        <div className="hidden lg:flex gap-2 ">
+          <Button variant="outline">
+            <ChevronDown />
+            Genre
+          </Button>
+          <div className="relative w-fit">
+            <InputGroup className="max-w-xs">
+              <InputGroupInput
+                value={searchValue}
+                onChange={onChangeSearchValue}
+                placeholder="Search..."
+                className="w-95"
+              />
+              <InputGroupAddon>
+                <Search />
+              </InputGroupAddon>
+            </InputGroup>
+            <div className={`w-144.5 bg-red-500 rounded-xl absolute`}>
+              {movies.map((movie) => (
+                <h1 key={movie.id}>{movie.title}</h1>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
+
       <div className="flex gap-2">
         <ModeToggle />
         <Button variant="outline" className="lg:hidden">
           <Search />
         </Button>
       </div>
-      {movies.map((movie) => (
-        <h1 key={movie.id}>{movie.title}</h1>
-      ))}
     </div>
   );
 };
