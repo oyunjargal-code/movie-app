@@ -1,5 +1,5 @@
 import { MovieDetails } from "../types";
-import { options } from "./index";
+import { options } from "./shared/options";
 
 export const details = async (movieId: string): Promise<MovieDetails> => {
   const respose = await fetch(

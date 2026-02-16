@@ -21,7 +21,7 @@ const PopularPage = () => {
   }, []);
   return (
     <div>
-      <div className="flex justify-between m-2 p-10">
+      <div className="flex justify-between  p-10">
         <Link href="/">
           <Button variant={"outline"}>
             <ArrowLeft />

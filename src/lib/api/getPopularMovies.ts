@@ -1,5 +1,5 @@
 import { MovieList } from "../types";
-import { options } from "./index";
+import { options } from "./shared/options";
 
 export const getPopularMovies = async (): Promise<MovieList> => {
   const respose = await fetch(

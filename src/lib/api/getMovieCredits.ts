@@ -1,5 +1,5 @@
 import { Credits } from "../types";
-import { options } from "./index";
+import { options } from "./shared/options";
 
 export const getMovieCredits = async (movieId: string): Promise<Credits> => {
   // const respose = await fetch(`${baseUrl}/movie/${movieId}/credits`, options);
