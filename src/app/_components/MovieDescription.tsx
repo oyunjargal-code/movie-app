@@ -30,7 +30,7 @@ export const MovieDescription = ({ movies }: PopularProps) => {
     <div className="w-full">
       <Carousel
         plugins={[plugin.current]}
-        className="w-full"
+        className="max-w-360 mx-auto"
         onMouseEnter={() => plugin.current.stop()}
         onMouseLeave={plugin.current.reset}
       >

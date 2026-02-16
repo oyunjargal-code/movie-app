@@ -21,7 +21,7 @@ const Home = async () => {
   console.log("Popular:", { popular });
 
   return (
-    <div className="flex flex-col gap-6 items-center justify-center xl:mx-auto">
+    <div className="flex flex-col gap-6 items-center justify-center mx-auto">
       <MovieDescription movies={popular} />
 
       <Upcoming movies={upComing} />
