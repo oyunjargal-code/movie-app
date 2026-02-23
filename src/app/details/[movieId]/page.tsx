@@ -39,9 +39,6 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
                 {movie.popularity}/10
               </span>
             </div>
-            {/* <div>
-          <h1>{movie.vote_count}</h1>
-        </div> */}
           </div>
         </div>
       </div>

@@ -63,7 +63,10 @@ export const Header = () => {
                 <Search />
               </InputGroupAddon>
             </InputGroup>
-            <div className={`w-144.5 bg-red-500 rounded-xl absolute`}>
+            <div
+              className={`w-144.5 bg-[#F4F4F5] pl-4
+ rounded-xl absolute z-50`}
+            >
               {movies.map((movie) => (
                 <h1 key={movie.id}>{movie.title}</h1>
               ))}

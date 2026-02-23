@@ -4,9 +4,24 @@ import { MovieCard } from "@/app/_components";
 import Link from "next/link";
 import { getTopRatedMovies } from "@/lib/api";
 
-const TopRatedPage = async () => {
-  const data = await getTopRatedMovies();
-  const movies = data.results;
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+type TopRatedProps = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export default async function TopRatedPage({ searchParams }: TopRatedProps) {
+  const { page } = await searchParams;
+  const { results: movies } = await getTopRatedMovies(page);
+
   return (
     <div>
       <div className="flex justify-between m-2">
@@ -31,8 +46,30 @@ const TopRatedPage = async () => {
           );
         })}
       </div>
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href="#" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="?page=1">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="?page=2" isActive>
+              2
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="?page=3">3</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext href="#" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   );
-};
-
-export default TopRatedPage;
+}

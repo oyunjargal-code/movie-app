@@ -1,12 +1,28 @@
 import { MovieCard } from "@/app/_components";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-
 import Link from "next/link";
 import { getUpcomingMovies } from "@/lib/api";
-const UpcomingPage = async () => {
-  const data = await getUpcomingMovies();
-  const movies = data.results;
+
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+type UpcomingProps = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export default async function UpcomingPage({ searchParams }: UpcomingProps) {
+  const { page } = await searchParams;
+
+  const { results: movies } = await getUpcomingMovies(page);
+
   return (
     <div>
       <div className="flex justify-between m-2">
@@ -29,8 +45,30 @@ const UpcomingPage = async () => {
           );
         })}
       </div>
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href="#" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="?page=1">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="?page=2" isActive>
+              2
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="?page=3">3</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext href="#" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   );
-};
-
-export default UpcomingPage;
+}

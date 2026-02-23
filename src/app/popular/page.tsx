@@ -1,24 +1,29 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { MovieCard } from "@/app/_components";
 import Link from "next/link";
 import { Movie } from "@/lib/types";
 import { getPopularMovies } from "@/lib/api";
-import { useEffect, useState } from "react";
 
-const PopularPage = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      const { results } = await getPopularMovies();
+type PopularProps = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-      setMovies(results);
-    };
+export default async function PopularPage({ searchParams }: PopularProps) {
+  const { page } = await searchParams;
 
-    fetchMovies();
-  }, []);
+  const { results: movies } = await getPopularMovies(page);
+
   return (
     <div>
       <div className="flex justify-between  p-10">
@@ -43,8 +48,31 @@ const PopularPage = () => {
           );
         })}
       </div>
+
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href="#" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="?page=1">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="?page=2" isActive>
+              2
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="?page=3">3</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext href="#" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   );
-};
-
-export default PopularPage;
+}
