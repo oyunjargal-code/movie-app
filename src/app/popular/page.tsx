@@ -24,6 +24,12 @@ export default async function PopularPage({ searchParams }: PopularProps) {
 
   const { results: movies } = await getPopularMovies(page);
 
+  const { total_pages } = await getPopularMovies(page);
+
+  const pages = Array(total_pages)
+    .fill(0)
+    .map((_, index) => index + 1);
+
   return (
     <div>
       <div className="flex justify-between  p-10">
@@ -51,7 +57,19 @@ export default async function PopularPage({ searchParams }: PopularProps) {
 
       <Pagination>
         <PaginationContent>
-          <PaginationItem>
+          {/* {page.map((pageNum, index) => {
+            if (Number(pageNum) + 3 < Number(page)) return null;
+            if (Number(pageNum) - 3 > Number(page)) return null;
+            return (
+              <PaginationItem key={index}>
+                <PaginationLink href={`?page=${pageNum}`}>
+                  {pageNum}
+                </PaginationLink>
+              </PaginationItem>
+            );
+          })} */}
+
+          {/* <PaginationItem>
             <PaginationPrevious href="#" />
           </PaginationItem>
           <PaginationItem>
@@ -70,7 +88,7 @@ export default async function PopularPage({ searchParams }: PopularProps) {
           </PaginationItem>
           <PaginationItem>
             <PaginationNext href="#" />
-          </PaginationItem>
+          </PaginationItem> */}
         </PaginationContent>
       </Pagination>
     </div>
