@@ -11,6 +11,7 @@ import { ModeToggle } from "@/components/ui/mode-toggle";
 import { ChangeEventHandler, use, useEffect, useState } from "react";
 import { searchMovies } from "@/lib/api/searchMovies";
 import { Movie } from "@/lib/types";
+import Link from "next/link";
 
 export const Header = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -97,7 +98,7 @@ export const Header = () => {
             >
               {movies.slice(0, 5).map((movie) => {
                 return (
-                  <div>
+                  <Link key={movie.id} href={`/details/${movie.id}`}>
                     <SearchMovie
                       key={movie.id}
                       name={movie.title}
@@ -105,7 +106,7 @@ export const Header = () => {
                       img={movie.poster_path}
                     />
                     <button className="text-sm">See more ...</button>
-                  </div>
+                  </Link>
                 );
               })}
             </div>

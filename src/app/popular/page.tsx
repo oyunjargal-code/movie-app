@@ -46,12 +46,14 @@ export default async function PopularPage({ searchParams }: PopularProps) {
       <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
         {movies.map((movie) => {
           return (
-            <MovieCard
-              key={movie.id}
-              name={movie.title}
-              rating={movie.vote_average}
-              img={movie.poster_path}
-            />
+            <Link key={movie.id} href={`/details/${movie.id}`}>
+              <MovieCard
+                key={movie.id}
+                name={movie.title}
+                rating={movie.vote_average}
+                img={movie.poster_path}
+              />
+            </Link>
           );
         })}
       </div>
