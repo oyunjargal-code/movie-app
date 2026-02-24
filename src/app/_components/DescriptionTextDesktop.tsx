@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
+import Link from "next/link";
 type DescriptionTextType = {
   name: string;
   rating: number;
@@ -11,7 +12,7 @@ export const DescriptionTextDesktop = ({
   desc,
 }: DescriptionTextType) => {
   return (
-    <div className="hidden sm:block md:top-1/2 md:left-1/12 md:w-100 md:absolute z-10  md:text-white">
+    <div className="hidden sm:block md:top-1/4 md:left-1/12 md:w-100 md:absolute z-10  md:text-white">
       <div className="flex md:flex-col justify-between p-2">
         <div>
           <p className="text-sm">Now Playing:</p>
@@ -33,11 +34,17 @@ h-[22.19px] flex"
       <div>
         <p className="p-2 h-fit">{desc}</p>
       </div>
-      <div className="ml-2 text-black">
-        <Button>
-          <Play />
-          Watch Trailer
-        </Button>
+      <div className="flex gap-2">
+        <div className="ml-2 text-black">
+          <Button>
+            <Play />
+            Watch Trailer
+          </Button>
+        </div>
+        <div className="text-black dark:text-white">
+          {/* <Link key={}></Link> */}
+          <Button variant={"outline"}>See more ...</Button>
+        </div>
       </div>
     </div>
   );

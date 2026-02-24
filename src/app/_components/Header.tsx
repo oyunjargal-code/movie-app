@@ -105,7 +105,6 @@ export const Header = () => {
                       rating={movie.vote_average}
                       img={movie.poster_path}
                     />
-                    <button className="text-sm">See more ...</button>
                   </Link>
                 );
               })}

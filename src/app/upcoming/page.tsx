@@ -21,7 +21,14 @@ type UpcomingProps = {
 export default async function UpcomingPage({ searchParams }: UpcomingProps) {
   const { page } = await searchParams;
 
-  const { results: movies } = await getUpcomingMovies(page);
+  const { results: movies, total_pages } = await getUpcomingMovies(page);
+
+  const currentPage = Number(page ?? 1);
+  const limitedPages = Math.min(total_pages, 500);
+
+  const pages = Array(limitedPages)
+    .fill(0)
+    .map((_, index) => index + 1);
 
   return (
     <div className="w-360 mx-auto">
@@ -36,16 +43,31 @@ export default async function UpcomingPage({ searchParams }: UpcomingProps) {
       <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
         {movies.map((movie) => {
           return (
-            <MovieCard
-              key={movie.id}
-              name={movie.title}
-              rating={movie.vote_average}
-              img={movie.poster_path}
-            />
+            <Link key={movie.id} href={`/details/${movie.id}`}>
+              <MovieCard
+                key={movie.id}
+                name={movie.title}
+                rating={movie.vote_average}
+                img={movie.poster_path}
+              />
+            </Link>
           );
         })}
       </div>
       <Pagination>
+        <PaginationContent>
+          {pages.map((pageNum, index) => {
+            if (Number(pageNum) + 3 < currentPage) return null;
+            if (Number(pageNum) - 3 > currentPage) return null;
+            return (
+              <PaginationItem key={index}>
+                <PaginationLink href={`?page=${pageNum}`}>
+                  {pageNum}
+                </PaginationLink>
+              </PaginationItem>
+            );
+          })}
+          {/* <Pagination>
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious href="#" />
@@ -67,6 +89,8 @@ export default async function UpcomingPage({ searchParams }: UpcomingProps) {
           <PaginationItem>
             <PaginationNext href="#" />
           </PaginationItem>
+        </PaginationContent>
+      </Pagination> */}
         </PaginationContent>
       </Pagination>
     </div>
