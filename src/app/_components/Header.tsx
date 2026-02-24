@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Moon, Search, ChevronDown, Film } from "lucide-react";
+import { Moon, Search, ChevronDown, Film, Star } from "lucide-react";
 
 import {
   InputGroup,
@@ -37,6 +37,31 @@ export const Header = () => {
     return () => clearTimeout(timer);
   }, [searchValue]);
 
+  type SearchMovieType = {
+    img: string;
+    rating: number;
+    name: string;
+    // id: number;
+  };
+
+  const SearchMovie = ({ img, rating, name }: SearchMovieType) => {
+    return (
+      <div>
+        <img
+          src={`https://image.tmdb.org/t/p/w500${img}`}
+          alt={name}
+          className="w-25 h-12 md:h-[100px] rounded-t-lg "
+        />
+        <div>
+          <div>
+            <Star />
+            <span className="text-sm dark:text-[#71717A)]">{rating}/10</span>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="w-full h-fit flex justify-between p-6 max-w-360">
       <div className="flex gap-2 p-2">
@@ -64,12 +89,19 @@ export const Header = () => {
               </InputGroupAddon>
             </InputGroup>
             <div
-              className={`w-144.5 bg-[#F4F4F5] pl-4
+              className={`w-[150px] bg-[#F4F4F5] pl-4
  rounded-xl absolute z-50`}
             >
-              {movies.map((movie) => (
-                <h1 key={movie.id}>{movie.title}</h1>
-              ))}
+              {movies.map((movie) => {
+                return (
+                  <SearchMovie
+                    key={movie.id}
+                    name={movie.title}
+                    rating={movie.vote_average}
+                    img={movie.poster_path}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

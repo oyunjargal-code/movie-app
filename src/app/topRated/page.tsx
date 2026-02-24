@@ -23,7 +23,7 @@ export default async function TopRatedPage({ searchParams }: TopRatedProps) {
   const { results: movies } = await getTopRatedMovies(page);
 
   return (
-    <div>
+    <div className="w-360 mx-auto">
       <div className="flex justify-between m-2">
         <Link href="/">
           <Button variant={"outline"}>

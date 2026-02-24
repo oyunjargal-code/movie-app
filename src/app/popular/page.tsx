@@ -22,16 +22,17 @@ type PopularProps = {
 export default async function PopularPage({ searchParams }: PopularProps) {
   const { page } = await searchParams;
 
-  const { results: movies } = await getPopularMovies(page);
+  const { results: movies, total_pages } = await getPopularMovies(page);
 
-  const { total_pages } = await getPopularMovies(page);
+  const currentPage = Number(page ?? 1);
+  const limitedPages = Math.min(total_pages, 500);
 
-  const pages = Array(total_pages)
+  const pages = Array(limitedPages)
     .fill(0)
     .map((_, index) => index + 1);
 
   return (
-    <div>
+    <div className="w-360 mx-auto">
       <div className="flex justify-between  p-10">
         <Link href="/">
           <Button variant={"outline"}>
@@ -57,9 +58,9 @@ export default async function PopularPage({ searchParams }: PopularProps) {
 
       <Pagination>
         <PaginationContent>
-          {/* {page.map((pageNum, index) => {
-            if (Number(pageNum) + 3 < Number(page)) return null;
-            if (Number(pageNum) - 3 > Number(page)) return null;
+          {pages.map((pageNum, index) => {
+            if (Number(pageNum) + 3 < currentPage) return null;
+            if (Number(pageNum) - 3 > currentPage) return null;
             return (
               <PaginationItem key={index}>
                 <PaginationLink href={`?page=${pageNum}`}>
@@ -67,7 +68,7 @@ export default async function PopularPage({ searchParams }: PopularProps) {
                 </PaginationLink>
               </PaginationItem>
             );
-          })} */}
+          })}
 
           {/* <PaginationItem>
             <PaginationPrevious href="#" />
