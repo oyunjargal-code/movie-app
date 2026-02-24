@@ -47,14 +47,17 @@ export const Header = () => {
   const SearchMovie = ({ img, rating, name }: SearchMovieType) => {
     return (
       <div>
+        <div className="left-2.5">
+          <h5 className="text-sm p-2 truncate">{name}</h5>
+        </div>
         <img
           src={`https://image.tmdb.org/t/p/w500${img}`}
           alt={name}
           className="w-25 h-12 md:h-[100px] rounded-t-lg "
         />
         <div>
-          <div>
-            <Star />
+          <div className="  flex gap-1 p-2">
+            <Star className="w-3 h-3 text-[#FDE047] fill-[#FDE047]" />
             <span className="text-sm dark:text-[#71717A)]">{rating}/10</span>
           </div>
         </div>
@@ -92,14 +95,17 @@ export const Header = () => {
               className={`w-[150px] bg-[#F4F4F5] pl-4
  rounded-xl absolute z-50`}
             >
-              {movies.map((movie) => {
+              {movies.slice(0, 5).map((movie) => {
                 return (
-                  <SearchMovie
-                    key={movie.id}
-                    name={movie.title}
-                    rating={movie.vote_average}
-                    img={movie.poster_path}
-                  />
+                  <div>
+                    <SearchMovie
+                      key={movie.id}
+                      name={movie.title}
+                      rating={movie.vote_average}
+                      img={movie.poster_path}
+                    />
+                    <button className="text-sm">See more ...</button>
+                  </div>
                 );
               })}
             </div>
