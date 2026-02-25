@@ -7,3 +7,4 @@ export * from "./Popular";
 export * from "./TopRated";
 export * from "./Upcoming";
 export * from "./DescriptionTextDesktop";
+export * from "./Header-new";

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
-import { Foother, Header } from "./_components";
+import { Foother, HeaderNew } from "./_components";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +37,8 @@ export default function RootLayout({
         >
           <div>
             <div className="max-w-360 mx-auto">
-              <Header />
+              {/* <Header /> */}
+              <HeaderNew />
             </div>
 
             {children}
