@@ -1,15 +1,19 @@
 import { Button } from "@/components/ui/button";
+import { Movie } from "@/lib/types";
 import { Play } from "lucide-react";
+import Link from "next/link";
 
 type DescriptionTextType = {
   name: string;
   rating: number;
   desc: string;
+  movies: Movie[];
 };
 export const DescriptionTextPhone = ({
   name,
   rating,
   desc,
+  movies,
 }: DescriptionTextType) => {
   return (
     <div className="block sm:hidden md:top-1/2 md:left-1/12 md:w-100 md:absolute z-10  md:text-white">
@@ -34,11 +38,22 @@ h-[22.19px] flex"
       <div>
         <p className="p-2 h-fit">{desc}</p>
       </div>
-      <div className="ml-2">
-        <Button>
-          <Play />
-          Watch Trailer
-        </Button>
+      <div className="flex gap-2">
+        <div className="ml-2">
+          <Button>
+            <Play />
+            Watch Trailer
+          </Button>
+        </div>
+        {/* <div>
+          {movies.map((movie) => {
+            return (
+              <Link key={movie.id} href={`/details/${movie.id}`}>
+                <Button variant={"outline"}>See more ... </Button>
+              </Link>
+            );
+          })}
+        </div> */}
       </div>
     </div>
   );

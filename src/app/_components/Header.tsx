@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Moon, Search, ChevronDown, Film, Star } from "lucide-react";
+import { Moon, Search, ChevronDown, Film, Star, Link2 } from "lucide-react";
 
 import {
   InputGroup,
@@ -12,6 +12,7 @@ import { ChangeEventHandler, use, useEffect, useState } from "react";
 import { searchMovies } from "@/lib/api/searchMovies";
 import { Movie } from "@/lib/types";
 import Link from "next/link";
+import SearchPage from "../search/page";
 
 export const Header = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -108,6 +109,9 @@ export const Header = () => {
                   </Link>
                 );
               })}
+              <Link href={`/search?q=${searchValue}`}>
+                <p>See all results for "{searchValue}"</p>
+              </Link>
             </div>
           </div>
         </div>
