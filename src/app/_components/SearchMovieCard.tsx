@@ -1,10 +1,10 @@
 import { Star } from "lucide-react";
 
 type SearchMovieType = {
-  img?: string;
-  rating?: number;
+  img: string;
+  rating: number;
   name: string;
-  id?: number;
+  id: number;
 };
 
 export const SearchMovieCard = ({ img, rating, name }: SearchMovieType) => {

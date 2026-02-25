@@ -55,7 +55,8 @@ export const SearchMovie = () => {
           <Search />
           {movies.slice(0, 5).map((movie) => {
             return (
-              <div>
+              <div className={`w-[150px] bg-[#F4F4F5] pl-4
+//  rounded-xl absolute z-50`}>
                 <SearchMovieCard key={movie.id} name={movie.title} />
               </div>
             );
