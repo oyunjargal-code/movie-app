@@ -107,3 +107,7 @@ export interface Crew {
   department: string;
   job: string;
 }
+
+export interface Genres {
+  genres: Genre[];
+}

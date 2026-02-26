@@ -37,10 +37,13 @@ export const MovieDescription = ({ movies }: PopularProps) => {
         <CarouselContent>
           {movies.slice(0, 3).map((movie) => {
             return (
-              <CarouselItem key={movie.id} className="w-full relative">
+              <CarouselItem
+                key={movie.id}
+                className="w-full h-75 md:h-150 relative"
+              >
                 <img
-                  className="w-full h-75 md:h-150 bg-cover bg-center"
-                  src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+                  className="bg-cover bg-center"
+                  src={`https://image.tmdb.org/t/p/w1920/${movie.backdrop_path}`}
                   alt=""
                 />
                 <DescriptionTextPhone
