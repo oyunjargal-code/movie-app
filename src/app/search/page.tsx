@@ -9,7 +9,7 @@ import {
 import { searchMovies } from "@/lib/api/searchMovies";
 
 type SearchProps = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ [key: string]: string }>;
 };
 
 export default async function SearchPage({ searchParams }: SearchProps) {

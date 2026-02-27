@@ -16,7 +16,7 @@ export const SearchMovie = () => {
   const [searchValue, setSearchValue] = useState("");
   const [movies, setMovies] = useState<Movie[]>([]);
   // const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const onChangeSearchValue: ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearchValue(e.target.value);
@@ -25,11 +25,12 @@ export const SearchMovie = () => {
   useEffect(() => {
     if (searchValue === "") {
       setMovies([]);
+      setOpen(false);
       return;
     }
 
     const timer = setTimeout(async () => {
-      const { results } = await searchMovies(searchValue);
+      const { results } = await searchMovies(searchValue, "1");
 
       setMovies(results); // movie hadgalj avna
       setOpen(true); // modal gargaj irj bgaa
@@ -55,38 +56,40 @@ export const SearchMovie = () => {
           <Search />
           {open && (
             <div
-              className={`w-[150px] bg-[#F4F4F5] pl-4
+              className={`w-100 flex flex-col gap-2 p-2 top-full mt-2 translate-x-1/3 bg-[#F4F4F5] pl-4
  rounded-xl absolute z-50`}
             >
-              {movies.slice(0, 5).map((movie) => {
-                return (
+              {movies.length === 0 ? (
+                <div className="flex justify-center w-full">
+                  <h1 className="text-xl text-black">Not found</h1>
+                </div>
+              ) : (
+                <div>
+                  {movies.slice(0, 5).map((movie) => {
+                    return (
+                      <Link
+                        key={movie.id}
+                        href={`/details/${movie.id}`}
+                        onClick={onSelectMovie}
+                      >
+                        <SearchMovieCard
+                          name={movie.title}
+                          rating={movie.vote_average}
+                          img={movie.poster_path}
+                        />
+                      </Link>
+                    );
+                  })}
                   <Link
-                    key={movie.id}
-                    href={`/details/${movie.id}`}
+                    href={`/search?q=${searchValue}&page=1`}
                     onClick={onSelectMovie}
                   >
-                    <SearchMovieCard
-                      key={movie.id}
-                      name={movie.title}
-                      rating={movie.vote_average}
-                      img={movie.poster_path}
-                    />
+                    <p className="hide">See all results for "{searchValue}"</p>
                   </Link>
-                );
-              })}
-              <Link href={`/search?q=${searchValue}`}>
-                <p className="hide">See all results for "{searchValue}"</p>
-              </Link>
+                </div>
+              )}
             </div>
           )}
-          {/* {movies.slice(0, 5).map((movie) => {
-            return (
-              <div className={`w-[150px] bg-[#F4F4F5] pl-4
-//  rounded-xl absolute z-50`}>
-                <SearchMovieCard key={movie.id} name={movie.title} />
-              </div>
-            );
-          })} */}
         </InputGroupAddon>
       </InputGroup>
     </div>

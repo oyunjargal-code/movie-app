@@ -41,10 +41,6 @@ h-[22.19px] flex"
             Watch Trailer
           </Button>
         </div>
-        <div className="text-black dark:text-white">
-          {/* <Link key={}></Link> */}
-          <Button variant={"outline"}>See more ...</Button>
-        </div>
       </div>
     </div>
   );

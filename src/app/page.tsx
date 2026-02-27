@@ -15,9 +15,9 @@ import {
 import Link from "next/link";
 
 const Home = async () => {
-  const { results: popular } = await getPopularMovies();
-  const { results: upComing } = await getUpcomingMovies();
-  const { results: topRated } = await getTopRatedMovies();
+  const { results: popular } = await getPopularMovies("1");
+  const { results: upComing } = await getUpcomingMovies("1");
+  const { results: topRated } = await getTopRatedMovies("1");
   console.log("Popular:", { popular });
 
   return (

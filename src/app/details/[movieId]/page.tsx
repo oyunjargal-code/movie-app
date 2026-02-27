@@ -32,11 +32,11 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
             <h3 className="text-4xl font-bold ">{movie.title}</h3>
             <p>{movie.release_date}</p>
           </div>
-          <div className="flex gap-1 p-2">
+          <div className="flex flex-col gap-1 p-2">
             <div>
               <Star className="w-5 h-5 text-[#FDE047] fill-[#FDE047]" />
               <span className="text-sm dark:text-[#71717A)]">
-                {movie.popularity}/10
+                {movie.vote_average.toFixed()}/10
               </span>
             </div>
           </div>
