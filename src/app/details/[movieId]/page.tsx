@@ -43,12 +43,15 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
         </div>
       </div>
       <div>
-        <img
-          className="p-2"
-          src={`${imgBaseUrl}${movie.poster_path}`}
-          alt="imgBaseUrl"
-        />
+        <div>
+          <img
+            className="p-2"
+            src={`${imgBaseUrl}${movie.poster_path}`}
+            alt="imgBaseUrl"
+          />
+        </div>
       </div>
+
       <div className="gap-2 p-2 grid grid-cols-2">
         <div>
           <img

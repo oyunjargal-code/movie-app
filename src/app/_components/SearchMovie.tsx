@@ -53,43 +53,42 @@ export const SearchMovie = () => {
 
         <InputGroupAddon>
           <Search />
-          {movies.slice(0, 5).map((movie) => {
+          {open && (
+            <div
+              className={`w-[150px] bg-[#F4F4F5] pl-4
+ rounded-xl absolute z-50`}
+            >
+              {movies.slice(0, 5).map((movie) => {
+                return (
+                  <Link
+                    key={movie.id}
+                    href={`/details/${movie.id}`}
+                    onClick={onSelectMovie}
+                  >
+                    <SearchMovieCard
+                      key={movie.id}
+                      name={movie.title}
+                      rating={movie.vote_average}
+                      img={movie.poster_path}
+                    />
+                  </Link>
+                );
+              })}
+              <Link href={`/search?q=${searchValue}`}>
+                <p className="hide">See all results for "{searchValue}"</p>
+              </Link>
+            </div>
+          )}
+          {/* {movies.slice(0, 5).map((movie) => {
             return (
               <div className={`w-[150px] bg-[#F4F4F5] pl-4
 //  rounded-xl absolute z-50`}>
                 <SearchMovieCard key={movie.id} name={movie.title} />
               </div>
             );
-          })}
+          })} */}
         </InputGroupAddon>
       </InputGroup>
     </div>
   );
 };
-
-//  {open && (
-//         <div
-//           className={`w-[150px] bg-[#F4F4F5] pl-4
-//  rounded-xl absolute z-50`}
-//         >
-//           {movies.slice(0, 5).map((movie) => {
-//             return (
-//               <Link
-//                 key={movie.id}
-//                 href={`/details/${movie.id}`}
-//                 onClick={onSelectMovie}
-//               >
-//                 <SearchMovieCard
-//                   key={movie.id}
-//                   name={movie.title}
-//                   rating={movie.vote_average}
-//                   img={movie.poster_path}
-//                 />
-//               </Link>
-//             );
-//           })}
-//           <Link href={`/search?q=${searchValue}`}>
-//             <p className="hide">See all results for "{searchValue}"</p>
-//           </Link>
-//         </div>
-//       )}

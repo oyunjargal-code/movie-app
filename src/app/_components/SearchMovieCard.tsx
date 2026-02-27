@@ -16,7 +16,7 @@ export const SearchMovieCard = ({ img, rating, name }: SearchMovieType) => {
       <img
         src={`https://image.tmdb.org/t/p/w500${img}`}
         alt={name}
-        className="w-25 h-12 md:h-[100px] rounded-t-lg "
+        className="w-25 h-12 md:h-25 rounded-t-lg "
       />
       <div>
         <div className="  flex gap-1 p-2">
