@@ -4,11 +4,16 @@ import { ChevronRight } from "lucide-react";
 
 type GenreProps = {
   genre: GenreType;
+  genreId: number;
+  genrePathId: string | string[] | undefined;
 };
 
-export const Genre = ({ genre }: GenreProps) => {
+export const Genre = ({ genre, genreId, genrePathId }: GenreProps) => {
   return (
-    <Badge variant="outline">
+    <Badge
+      variant="outline"
+      className={`${genreId === Number(genrePathId) && "bg-black text-white"}`}
+    >
       {genre.name} <ChevronRight />
     </Badge>
   );

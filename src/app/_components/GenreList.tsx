@@ -2,7 +2,11 @@ import { getGenres } from "@/lib/api/getGenres";
 import { Genre } from "../_components/Genre";
 import Link from "next/link";
 
-export const GenreList = async () => {
+export const GenreList = async ({
+  genrePathId,
+}: {
+  genrePathId: string | string[] | undefined;
+}) => {
   const { genres } = await getGenres();
 
   return (
@@ -12,7 +16,7 @@ export const GenreList = async () => {
       <div className="flex gap-2 flex-wrap">
         {genres.map((genre) => (
           <Link key={genre.id} href={`/searchGenres?genre=${genre.id}`}>
-            <Genre genre={genre} />
+            <Genre genre={genre} genreId={genre.id} genrePathId={genrePathId} />
           </Link>
         ))}
       </div>

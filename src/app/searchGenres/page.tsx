@@ -10,7 +10,6 @@ export default async function SearchGenres({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const { genre } = await searchParams;
-
   const { results } = await getMovieByGenreId(String(genre));
 
   return (
@@ -29,7 +28,7 @@ export default async function SearchGenres({
         })}
       </div>
       <span className="border border-muted-foreground/60 max-h-100"></span>
-      <GenreList />
+      <GenreList genrePathId={genre} />
     </div>
   );
 }

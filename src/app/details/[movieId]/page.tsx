@@ -4,11 +4,8 @@ import { Button } from "@/components/ui/button";
 import { details, getMovieCredits } from "@/lib/api";
 import { getMovieThriller } from "@/lib/api/getMovieThriller";
 import { getSameMovies } from "@/lib/api/getSameMovie";
-import { Crew } from "@/lib/types";
 import { Star } from "lucide-react";
-import { Actor } from "next/font/google";
 import Link from "next/link";
-import { dir } from "node:console";
 
 type DetailsPageProps = {
   params: Promise<{ movieId: string }>;
@@ -50,26 +47,22 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
           </div>
         </div>
       </div>
-      <div>
-        <div>
+      <div className="flex gap-2 justify-center">
+        <div className="h-[424px] w-[290px]">
+          <img src={`${imgBaseUrl}${movie.poster_path}`} alt="poster" />
+        </div>
+        <div className="h-[428px] w-[760px]">
           <iframe
             src={`//www.youtube-nocookie.com/embed/${trailerKey}`}
             allowFullScreen
-            className="min-w-full min-h-[561px]"
+            className="min-h-[428px] w-full"
           />
         </div>
       </div>
 
       <div className="gap-2 p-2 grid grid-cols-2">
-        <div>
-          <img
-            className="h-[148px] w-[100px] "
-            src={`${imgBaseUrl}${movie.poster_path}`}
-            alt="poster"
-          />
-        </div>
         <div className="gap-2 p-2">
-          <div className="flex gap-2 p-2">
+          <div className="p-2 gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
             {movie.genres.map((genre) => (
               <Badge variant={"secondary"} key={genre.id}>
                 {genre.name}

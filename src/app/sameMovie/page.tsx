@@ -1,19 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { MovieCard } from "@/app/_components";
 import Link from "next/link";
-import { Movie } from "@/lib/types";
-import { getPopularMovies } from "@/lib/api";
 
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
 import { getSameMovies } from "@/lib/api/getSameMovie";
 import { PagePagination } from "../_components/PagePagination";
 
