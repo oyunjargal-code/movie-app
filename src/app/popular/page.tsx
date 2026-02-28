@@ -22,7 +22,7 @@ type PopularProps = {
 export default async function PopularPage({ searchParams }: PopularProps) {
   const { page } = await searchParams;
 
-  const { results: movies, total_pages } = await getPopularMovies("1");
+  const { results: movies, total_pages } = await getPopularMovies(page);
 
   const currentPage = Number(page ?? 1);
   const limitedPages = Math.min(total_pages, 500);
@@ -60,6 +60,16 @@ export default async function PopularPage({ searchParams }: PopularProps) {
 
       <Pagination>
         <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              href={`?page=${Number(page) - 1}`}
+              aria-disabled={Number(page) <= 1}
+              tabIndex={Number(page) <= 1 ? -1 : undefined}
+              className={
+                Number(page) <= 1 ? "pointer-events-none opacity-30" : undefined
+              }
+            />
+          </PaginationItem>
           {pages.map((pageNum, index) => {
             if (Number(pageNum) + 3 < currentPage) return null;
             if (Number(pageNum) - 3 > currentPage) return null;
@@ -71,27 +81,9 @@ export default async function PopularPage({ searchParams }: PopularProps) {
               </PaginationItem>
             );
           })}
-
-          {/* <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="?page=1">1</PaginationLink>
+            <PaginationNext href={`?page=${Number(page) + 1}`} />
           </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="?page=2" isActive>
-              2
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="?page=3">3</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem> */}
         </PaginationContent>
       </Pagination>
     </div>
