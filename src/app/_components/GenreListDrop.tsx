@@ -17,7 +17,7 @@ export const GenreListDrop = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="p-5">
-        <GenreList />
+        <GenreList genrePathId={""} />
       </DropdownMenuContent>
     </DropdownMenu>
   );

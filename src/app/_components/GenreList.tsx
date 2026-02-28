@@ -1,6 +1,7 @@
 import { getGenres } from "@/lib/api/getGenres";
 import { Genre } from "../_components/Genre";
 import Link from "next/link";
+import { PagePagination } from "./PagePagination";
 
 export const GenreList = async ({
   genrePathId,
@@ -15,7 +16,11 @@ export const GenreList = async ({
       <p>See lists of movies by genre</p>
       <div className="flex gap-2 flex-wrap">
         {genres.map((genre) => (
-          <Link key={genre.id} href={`/searchGenres?genre=${genre.id}`}>
+          <Link
+            key={genre.id}
+            href={`/searchGenres?genre=${genre.id}/&page=1`}
+            className="group"
+          >
             <Genre genre={genre} genreId={genre.id} genrePathId={genrePathId} />
           </Link>
         ))}

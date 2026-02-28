@@ -9,10 +9,17 @@ type GenreProps = {
 };
 
 export const Genre = ({ genre, genreId, genrePathId }: GenreProps) => {
+  const isActive = genreId === Number(genrePathId);
   return (
     <Badge
       variant="outline"
-      className={`${genreId === Number(genrePathId) && "bg-black text-white"}`}
+      className={`
+        transition-colors 
+        ${isActive ? "bg-black text-white" : "bg-transparent text-black"} 
+        group-hover:bg-slate-100 
+        group-active:bg-black 
+        group-active:text-white
+      `}
     >
       {genre.name} <ChevronRight />
     </Badge>
