@@ -1,4 +1,3 @@
-export * from "./Header";
 export * from "./MovieDescription";
 export * from "./MovieCard";
 export * from "./DescriptionTextPhone";

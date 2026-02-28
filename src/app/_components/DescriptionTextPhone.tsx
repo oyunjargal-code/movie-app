@@ -7,13 +7,11 @@ type DescriptionTextType = {
   name: string;
   rating: number;
   desc: string;
-  movies: Movie[];
 };
 export const DescriptionTextPhone = ({
   name,
   rating,
   desc,
-  movies,
 }: DescriptionTextType) => {
   return (
     <div className="block sm:hidden md:top-1/2 md:left-1/12 md:w-100 md:absolute z-10  md:text-white">

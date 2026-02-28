@@ -1,11 +1,8 @@
 import {
-  Foother,
-  Header,
   MovieDescription,
   Popular,
   TopRated,
   Upcoming,
-  MovieCard,
 } from "@/app/_components";
 import {
   getPopularMovies,
@@ -15,9 +12,6 @@ import {
 import Link from "next/link";
 
 const Home = async () => {
-
-
-  
   const { results: popular } = await getPopularMovies("1");
   const { results: upComing } = await getUpcomingMovies("1");
   const { results: topRated } = await getTopRatedMovies("1");
