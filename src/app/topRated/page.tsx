@@ -20,7 +20,7 @@ type TopRatedProps = {
 
 export default async function TopRatedPage({ searchParams }: TopRatedProps) {
   const { page } = await searchParams;
-  const { results: movies, total_pages } = await getTopRatedMovies(page);
+  const { results: movies, total_pages } = await getTopRatedMovies("1");
 
   const currentPage = Number(page ?? 1);
   const limitedPages = Math.min(total_pages, 500);

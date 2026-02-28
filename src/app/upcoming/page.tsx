@@ -21,7 +21,7 @@ type UpcomingProps = {
 export default async function UpcomingPage({ searchParams }: UpcomingProps) {
   const { page } = await searchParams;
 
-  const { results: movies, total_pages } = await getUpcomingMovies(page);
+  const { results: movies, total_pages } = await getUpcomingMovies("1");
 
   const currentPage = Number(page ?? 1);
   const limitedPages = Math.min(total_pages, 500);

@@ -22,7 +22,7 @@ type PopularProps = {
 export default async function PopularPage({ searchParams }: PopularProps) {
   const { page } = await searchParams;
 
-  const { results: movies, total_pages } = await getPopularMovies(page);
+  const { results: movies, total_pages } = await getPopularMovies("1");
 
   const currentPage = Number(page ?? 1);
   const limitedPages = Math.min(total_pages, 500);

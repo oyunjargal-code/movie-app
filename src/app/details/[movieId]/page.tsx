@@ -2,9 +2,11 @@ import { MovieCard } from "@/app/_components";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { details, getMovieCredits } from "@/lib/api";
+import { getSameMovies } from "@/lib/api/getSameMovie";
 import { Crew } from "@/lib/types";
-import { Link, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { Actor } from "next/font/google";
+import Link from "next/link";
 import { dir } from "node:console";
 
 type DetailsPageProps = {
@@ -16,6 +18,7 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
 
   const movie = await details(movieId);
   const imgBaseUrl = "https://image.tmdb.org/t/p/original";
+  const { results: similarMovies } = await getSameMovies(movieId, "1");
 
   const credits = await getMovieCredits(movieId);
   console.log({ movie });
@@ -47,7 +50,7 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
           <img
             className="p-2"
             src={`${imgBaseUrl}${movie.poster_path}`}
-            alt="imgBaseUrl"
+            alt={movie.original_title}
           />
         </div>
       </div>
@@ -101,7 +104,22 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
       </div>
       <div className="flex justify-between">
         <h2 className="font-bold">More like this</h2>
-        <Button variant={"outline"}>See more</Button>
+        <Link href={`/sameMovie?movieId=${movieId}&page=1`}>
+          <Button variant={"outline"}>See more</Button>
+        </Link>
+      </div>
+      <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
+        {similarMovies.slice(0, 10).map((movie) => {
+          return (
+            <Link key={movie.id} href={`/details/${movie.id}`}>
+              <MovieCard
+                name={movie.title}
+                rating={movie.vote_average}
+                img={movie.poster_path}
+              />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

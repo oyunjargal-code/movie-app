@@ -10,15 +10,15 @@ import { GenreList } from "./GenreList";
 export const GenreListDrop = () => {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>
         <Button variant="outline">
           <ChevronDown />
           Genre
         </Button>
-        <DropdownMenuContent className="p-5">
-          <GenreList />
-        </DropdownMenuContent>
       </DropdownMenuTrigger>
+      <DropdownMenuContent className="p-5">
+        <GenreList />
+      </DropdownMenuContent>
     </DropdownMenu>
   );
 };

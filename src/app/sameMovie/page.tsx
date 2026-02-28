@@ -21,12 +21,16 @@ type SameMovieProps = {
 };
 
 export default async function SameMoviePage({ searchParams }: SameMovieProps) {
-  const { page } = await searchParams;
+  const { page, movieId } = await searchParams;
 
-  const { results: movies, total_pages } = await getSameMovies(page);
+  const { results: movies, total_pages } = await getSameMovies(
+    movieId as string,
+    "1",
+  );
 
   const currentPage = Number(page ?? 1);
   const limitedPages = Math.min(total_pages, 500);
+  console.log(movies);
 
   const pages = Array(limitedPages)
     .fill(0)
