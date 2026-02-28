@@ -2,6 +2,7 @@ import { MovieCard } from "@/app/_components";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { details, getMovieCredits } from "@/lib/api";
+import { getMovieThriller } from "@/lib/api/getMovieThriller";
 import { getSameMovies } from "@/lib/api/getSameMovie";
 import { Crew } from "@/lib/types";
 import { Star } from "lucide-react";
@@ -19,6 +20,10 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
   const movie = await details(movieId);
   const imgBaseUrl = "https://image.tmdb.org/t/p/original";
   const { results: similarMovies } = await getSameMovies(movieId, "1");
+  const { results: trailerResults } = await getMovieThriller(movieId);
+
+  const trailer = trailerResults.find((trailer) => trailer.type === "Trailer");
+  const trailerKey = trailer?.key;
 
   const credits = await getMovieCredits(movieId);
   console.log({ movie });
@@ -47,6 +52,11 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
       </div>
       <div>
         <div>
+          <iframe
+            src={`//www.youtube-nocookie.com/embed/${trailerKey}`}
+            allowFullScreen
+            className="min-w-full min-h-[561px]"
+          />
           <img
             className="p-2"
             src={`${imgBaseUrl}${movie.poster_path}`}

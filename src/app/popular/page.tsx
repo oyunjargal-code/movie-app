@@ -2,13 +2,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { MovieCard } from "@/app/_components";
 import Link from "next/link";
-import { Movie } from "@/lib/types";
 import { getPopularMovies } from "@/lib/api";
 
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -25,11 +23,10 @@ export default async function PopularPage({ searchParams }: PopularProps) {
   const { results: movies, total_pages } = await getPopularMovies(page);
 
   const currentPage = Number(page ?? 1);
-  const limitedPages = Math.min(total_pages, 500);
+  const totalPagesCount = Number(total_pages) || 0;
+  const limitedPages = Math.min(totalPagesCount, 500);
 
-  const pages = Array(limitedPages)
-    .fill(0)
-    .map((_, index) => index + 1);
+  const pages = Array.from({ length: limitedPages }, (_, index) => index + 1);
 
   return (
     <div className="w-360 mx-auto">
@@ -44,7 +41,7 @@ export default async function PopularPage({ searchParams }: PopularProps) {
         <h1 className="m-2 bold">Popular</h1>
       </div>
       <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
-        {movies.map((movie) => {
+        {movies?.map((movie) => {
           return (
             <Link key={movie.id} href={`/details/${movie.id}`}>
               <MovieCard
