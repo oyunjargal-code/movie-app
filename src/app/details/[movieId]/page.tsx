@@ -57,11 +57,6 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
             allowFullScreen
             className="min-w-full min-h-[561px]"
           />
-          <img
-            className="p-2"
-            src={`${imgBaseUrl}${movie.poster_path}`}
-            alt={movie.original_title}
-          />
         </div>
       </div>
 
@@ -119,7 +114,7 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
         </Link>
       </div>
       <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
-        {similarMovies.slice(0, 10).map((movie) => {
+        {similarMovies.slice(0, 5).map((movie) => {
           return (
             <Link key={movie.id} href={`/details/${movie.id}`}>
               <MovieCard

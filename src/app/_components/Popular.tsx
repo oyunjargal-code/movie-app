@@ -15,7 +15,7 @@ export const Popular = async ({ movies }: PopularProps) => {
     <div>
       <div className="flex justify-between m-2">
         <h1 className="m-2 bold">Popular</h1>
-        <Link href={`popular`}>
+        <Link href={`popular/?page=1`}>
           <Button variant={"outline"}>
             See more <ArrowRight />
           </Button>

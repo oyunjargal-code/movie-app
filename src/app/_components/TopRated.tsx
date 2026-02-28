@@ -14,7 +14,7 @@ export const TopRated = async ({ movies }: TopRatedProps) => {
     <div>
       <div className="flex justify-between m-2">
         <h1 className="m-2 bold">Top Rated</h1>
-        <Link href="/topRated">
+        <Link href="topRated/?page=1">
           <Button variant={"outline"}>
             See more <ArrowRight />
           </Button>

@@ -1,17 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { MovieCard } from "@/app/_components";
 import Link from "next/link";
 import { getPopularMovies } from "@/lib/api";
 
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import { PagePagination } from "../_components/PagePagination";
 
 type PopularProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -19,14 +12,8 @@ type PopularProps = {
 
 export default async function PopularPage({ searchParams }: PopularProps) {
   const { page } = await searchParams;
-
+  const url = "popular";
   const { results: movies, total_pages } = await getPopularMovies(page);
-
-  const currentPage = Number(page ?? 1);
-  const totalPagesCount = Number(total_pages) || 0;
-  const limitedPages = Math.min(totalPagesCount, 500);
-
-  const pages = Array.from({ length: limitedPages }, (_, index) => index + 1);
 
   return (
     <div className="w-360 mx-auto">
@@ -55,34 +42,7 @@ export default async function PopularPage({ searchParams }: PopularProps) {
         })}
       </div>
 
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              href={`?page=${Number(page) - 1}`}
-              aria-disabled={Number(page) <= 1}
-              tabIndex={Number(page) <= 1 ? -1 : undefined}
-              className={
-                Number(page) <= 1 ? "pointer-events-none opacity-30" : undefined
-              }
-            />
-          </PaginationItem>
-          {pages.map((pageNum, index) => {
-            if (Number(pageNum) + 3 < currentPage) return null;
-            if (Number(pageNum) - 3 > currentPage) return null;
-            return (
-              <PaginationItem key={index}>
-                <PaginationLink href={`?page=${pageNum}`}>
-                  {pageNum}
-                </PaginationLink>
-              </PaginationItem>
-            );
-          })}
-          <PaginationItem>
-            <PaginationNext href={`?page=${Number(page) + 1}`} />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      <PagePagination url={url} page={page} total_pages={total_pages} />
     </div>
   );
 }

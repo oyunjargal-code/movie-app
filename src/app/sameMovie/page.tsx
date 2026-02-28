@@ -15,6 +15,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { getSameMovies } from "@/lib/api/getSameMovie";
+import { PagePagination } from "../_components/PagePagination";
 
 type SameMovieProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -22,19 +23,12 @@ type SameMovieProps = {
 
 export default async function SameMoviePage({ searchParams }: SameMovieProps) {
   const { page, movieId } = await searchParams;
+  const url = `sameMovie?movieId=${movieId}&`;
 
   const { results: movies, total_pages } = await getSameMovies(
     movieId as string,
-    "1",
+    page as string,
   );
-
-  const currentPage = Number(page ?? 1);
-  const limitedPages = Math.min(total_pages, 500);
-  console.log(movies);
-
-  const pages = Array(limitedPages)
-    .fill(0)
-    .map((_, index) => index + 1);
 
   return (
     <div className="w-360 mx-auto">
@@ -49,7 +43,7 @@ export default async function SameMoviePage({ searchParams }: SameMovieProps) {
         <h1 className="m-2 bold">Same Movies</h1>
       </div>
       <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
-        {movies.map((movie) => {
+        {movies?.map((movie) => {
           return (
             <Link key={movie.id} href={`/details/${movie.id}`}>
               <MovieCard
@@ -63,42 +57,7 @@ export default async function SameMoviePage({ searchParams }: SameMovieProps) {
         })}
       </div>
 
-      <Pagination>
-        <PaginationContent>
-          {pages.map((pageNum, index) => {
-            if (Number(pageNum) + 3 < currentPage) return null;
-            if (Number(pageNum) - 3 > currentPage) return null;
-            return (
-              <PaginationItem key={index}>
-                <PaginationLink href={`?page=${pageNum}`}>
-                  {pageNum}
-                </PaginationLink>
-              </PaginationItem>
-            );
-          })}
-
-          {/* <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="?page=1">1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="?page=2" isActive>
-              2
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="?page=3">3</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem> */}
-        </PaginationContent>
-      </Pagination>
+      <PagePagination url={url} page={page} total_pages={total_pages} />
     </div>
   );
 }

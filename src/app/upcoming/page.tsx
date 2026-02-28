@@ -12,6 +12,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { PagePagination } from "../_components/PagePagination";
 
 type UpcomingProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -19,6 +20,7 @@ type UpcomingProps = {
 
 export default async function UpcomingPage({ searchParams }: UpcomingProps) {
   const { page } = await searchParams;
+  const url = "upcoming";
 
   const { results: movies, total_pages } = await getUpcomingMovies(page);
 
@@ -55,34 +57,7 @@ export default async function UpcomingPage({ searchParams }: UpcomingProps) {
         })}
       </div>
 
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              href={`?page=${Number(page) - 1}`}
-              aria-disabled={Number(page) <= 1}
-              tabIndex={Number(page) <= 1 ? -1 : undefined}
-              className={
-                Number(page) <= 1 ? "pointer-events-none opacity-30" : undefined
-              }
-            />
-          </PaginationItem>
-          {pages.map((pageNum, index) => {
-            if (Number(pageNum) + 3 < currentPage) return null;
-            if (Number(pageNum) - 3 > currentPage) return null;
-            return (
-              <PaginationItem key={index}>
-                <PaginationLink href={`?page=${pageNum}`}>
-                  {pageNum}
-                </PaginationLink>
-              </PaginationItem>
-            );
-          })}
-          <PaginationItem>
-            <PaginationNext href={`?page=${Number(page) + 1}`} />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      <PagePagination url={url} page={page} total_pages={total_pages} />
     </div>
   );
 }

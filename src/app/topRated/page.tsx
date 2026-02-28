@@ -1,17 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { MovieCard } from "@/app/_components";
 import Link from "next/link";
 import { getTopRatedMovies } from "@/lib/api";
 
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import { PagePagination } from "../_components/PagePagination";
 
 type TopRatedProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -19,6 +12,7 @@ type TopRatedProps = {
 
 export default async function TopRatedPage({ searchParams }: TopRatedProps) {
   const { page } = await searchParams;
+  const url = "topRated";
 
   const { results: movies, total_pages } = await getTopRatedMovies(page);
 
@@ -55,34 +49,7 @@ export default async function TopRatedPage({ searchParams }: TopRatedProps) {
         })}
       </div>
 
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              href={`?page=${Number(page) - 1}`}
-              aria-disabled={Number(page) <= 1}
-              tabIndex={Number(page) <= 1 ? -1 : undefined}
-              className={
-                Number(page) <= 1 ? "pointer-events-none opacity-30" : undefined
-              }
-            />
-          </PaginationItem>
-          {pages.map((pageNum, index) => {
-            if (Number(pageNum) + 3 < currentPage) return null;
-            if (Number(pageNum) - 3 > currentPage) return null;
-            return (
-              <PaginationItem key={index}>
-                <PaginationLink href={`?page=${pageNum}`}>
-                  {pageNum}
-                </PaginationLink>
-              </PaginationItem>
-            );
-          })}
-          <PaginationItem>
-            <PaginationNext href={`?page=${Number(page) + 1}`} />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      <PagePagination url={url} page={page} total_pages={total_pages} />
     </div>
   );
 }
