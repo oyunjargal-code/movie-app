@@ -48,14 +48,14 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
         </div>
       </div>
       <div className="flex gap-2 justify-center">
-        <div className="h-[424px] w-[290px]">
+        <div className="h-106 w-72.5">
           <img src={`${imgBaseUrl}${movie.poster_path}`} alt="poster" />
         </div>
-        <div className="h-[428px] w-[760px]">
+        <div className="h-107 w-190">
           <iframe
             src={`//www.youtube-nocookie.com/embed/${trailerKey}`}
             allowFullScreen
-            className="min-h-[428px] w-full"
+            className="min-h-107 w-full"
           />
         </div>
       </div>

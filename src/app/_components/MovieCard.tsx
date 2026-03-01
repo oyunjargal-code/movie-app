@@ -4,7 +4,6 @@ type MovieCardType = {
   img: string;
   rating: number;
   name: string;
-  // id: number;
 };
 
 export const MovieCard = ({ img, rating, name }: MovieCardType) => {

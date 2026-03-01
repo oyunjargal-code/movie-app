@@ -43,15 +43,6 @@ h-[22.19px] flex"
             Watch Trailer
           </Button>
         </div>
-        {/* <div>
-          {movies.map((movie) => {
-            return (
-              <Link key={movie.id} href={`/details/${movie.id}`}>
-                <Button variant={"outline"}>See more ... </Button>
-              </Link>
-            );
-          })}
-        </div> */}
       </div>
     </div>
   );
