@@ -15,7 +15,6 @@ import { Movie } from "@/lib/types";
 export const SearchMovie = () => {
   const [searchValue, setSearchValue] = useState("");
   const [movies, setMovies] = useState<Movie[]>([]);
-
   const [open, setOpen] = useState<boolean>(false);
 
   const onChangeSearchValue: ChangeEventHandler<HTMLInputElement> = (e) => {

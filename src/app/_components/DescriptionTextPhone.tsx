@@ -36,14 +36,14 @@ h-[22.19px] flex"
       <div>
         <p className="p-2 h-fit">{desc}</p>
       </div>
-      <div className="flex gap-2">
+      {/* <div className="flex gap-2">
         <div className="ml-2">
           <Button>
             <Play />
             Watch Trailer
           </Button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
