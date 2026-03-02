@@ -30,7 +30,7 @@ export const SearchMovieCard = ({ img, rating, name }: SearchMovieType) => {
           </div>
         </div>
 
-        <Button variant="link" className="text-black">
+        <Button variant="link" className="text-black m-2">
           See more <ArrowRight />
         </Button>
       </div>

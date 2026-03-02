@@ -30,7 +30,7 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
   console.log("writer:", writer);
 
   return (
-    <div>
+    <div className="w-360 mx-auto">
       <div>
         <div className="flex justify-between">
           <div>
@@ -77,7 +77,6 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
         <div className="grid grid-cols-2 m-2">
           <h3 className="font-bold">Director</h3>
           <div>
-            {/* {dataArray.filter(obj => obj.val > 1 && obj.val2).map(obj => obj.val2);} */}
             {credits.crew
               .filter((person) => person.job === "Director")
               .map((person) => person.name)}
@@ -103,7 +102,9 @@ const DetailsPage = async ({ params }: DetailsPageProps) => {
       <div className="flex justify-between">
         <h2 className="font-bold">More like this</h2>
         <Link href={`/sameMovie?movieId=${movieId}&page=1`}>
-          <Button variant={"outline"}>See more</Button>
+          <Button className="p-2" variant={"outline"}>
+            See more
+          </Button>
         </Link>
       </div>
       <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
