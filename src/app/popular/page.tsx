@@ -16,7 +16,7 @@ export default async function PopularPage({ searchParams }: PopularProps) {
   const { results: movies, total_pages } = await getPopularMovies(page);
 
   return (
-    <div className="w-360 mx-auto">
+    <div className="w-full h-fit flex flex-col justify-between p-6 max-w-360 mx-auto">
       <div className="flex justify-between  p-10">
         <Link href="/">
           <Button variant={"outline"}>

@@ -12,7 +12,7 @@ type PopularProps = {
 
 export const Popular = async ({ movies }: PopularProps) => {
   return (
-    <div>
+    <div className="w-full h-fit flex flex-col justify-between p-6 max-w-360">
       <div className="flex justify-between m-2">
         <h1 className="m-2 bold">Popular</h1>
         <Link href={`popular/?page=1`}>

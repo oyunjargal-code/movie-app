@@ -11,7 +11,7 @@ type TopRatedProps = {
 
 export const TopRated = async ({ movies }: TopRatedProps) => {
   return (
-    <div>
+    <div className="w-full h-fit flex flex-col justify-between p-6 max-w-360">
       <div className="flex justify-between m-2">
         <h1 className="m-2 bold">Top Rated</h1>
         <Link href="topRated/?page=1">

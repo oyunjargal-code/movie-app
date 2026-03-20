@@ -23,7 +23,7 @@ export default async function TopRatedPage({ searchParams }: TopRatedProps) {
   const pages = Array.from({ length: limitedPages }, (_, index) => index + 1);
 
   return (
-    <div className="w-360 mx-auto">
+    <div className="w-full h-fit flex flex-col justify-between p-6 max-w-360 mx-auto">
       <div className="flex justify-between m-2">
         <Link href="/">
           <Button variant={"outline"}>

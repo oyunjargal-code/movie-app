@@ -12,7 +12,7 @@ type UpcomingProps = {
 export const Upcoming = async ({ movies }: UpcomingProps) => {
   console.log({ movies });
   return (
-    <div>
+    <div className="w-full h-fit flex flex-col justify-between p-6 max-w-360" >
       <div className="flex justify-between m-2">
         <h1 className="m-2 bold">Upcoming</h1>
         <Link href="upcoming/?page=1">
