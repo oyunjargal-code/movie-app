@@ -14,14 +14,14 @@ export const Popular = async ({ movies }: PopularProps) => {
   return (
     <div className="w-full h-fit flex flex-col justify-between p-6 max-w-360">
       <div className="flex justify-between m-2">
-        <h1 className="m-2 bold">Popular</h1>
+        <h1 className = "font-semibold text-2xl leading-8 tracking-tight">Popular</h1>
         <Link href={`popular/?page=1`}>
-          <Button variant={"outline"}>
+          <Button className="font-medium text-sm leading-5 tracking-normal" variant={"outline"}>
             See more <ArrowRight />
           </Button>
         </Link>
       </div>
-      <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
+      <div className="gap-3 pb-4 grid grid-cols-2 md:grid-cols-5 m-x-auto">
         {movies.slice(0, 10).map((movie) => {
           return (
             <Link key={movie.id} href={`/details/${movie.id}`}>

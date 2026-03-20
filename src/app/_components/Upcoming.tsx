@@ -14,9 +14,9 @@ export const Upcoming = async ({ movies }: UpcomingProps) => {
   return (
     <div className="w-full h-fit flex flex-col justify-between p-6 max-w-360" >
       <div className="flex justify-between m-2">
-        <h1 className="m-2 bold">Upcoming</h1>
+        <h1 className = "font-semibold text-2xl leading-8 tracking-tight">Upcoming</h1>
         <Link href="upcoming/?page=1">
-          <Button variant={"outline"}>
+          <Button  variant={"outline"}>
             See more <ArrowRight />
           </Button>
         </Link>

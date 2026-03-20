@@ -51,11 +51,17 @@ export const MovieDescription = ({ movies }: PopularProps) => {
                   rating={movie.vote_average}
                   desc={movie.overview}
                 />
-                <DescriptionTextDesktop
+                {/* <DescriptionTextDesktop
                   name={movie.title}
                   rating={movie.vote_average}
                   desc={movie.overview}
-                />
+                /> */}
+                <DescriptionTextDesktop
+  name={movie.title}
+  rating={movie.vote_average}
+  desc={movie.overview}
+  movieId={movie.id}
+/>
               </CarouselItem>
             );
           })}

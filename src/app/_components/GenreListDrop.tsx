@@ -7,6 +7,22 @@ import {
 import { ChevronDown } from "lucide-react";
 import { GenreList } from "./GenreList";
 
+// export const GenreListDrop = () => {
+//   return (
+//     <DropdownMenu>
+//       <DropdownMenuTrigger asChild>
+//         <Button variant="outline">
+//           <ChevronDown />
+//           Genre
+//         </Button>
+//       </DropdownMenuTrigger>
+//       <DropdownMenuContent className="p-5">
+//         <GenreList genrePathId={""} />
+//       </DropdownMenuContent>
+//     </DropdownMenu>
+//   );
+// };
+
 export const GenreListDrop = () => {
   return (
     <DropdownMenu>
@@ -16,7 +32,7 @@ export const GenreListDrop = () => {
           Genre
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="p-5">
+      <DropdownMenuContent className="p-5 w-[600px]">
         <GenreList genrePathId={""} />
       </DropdownMenuContent>
     </DropdownMenu>

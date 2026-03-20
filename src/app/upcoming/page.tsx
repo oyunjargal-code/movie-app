@@ -40,7 +40,7 @@ export default async function UpcomingPage({ searchParams }: UpcomingProps) {
           </Button>
         </Link>
 
-        <h1 className="m-2 bold">Upcoming</h1>
+        <h1 className = "font-semibold text-2xl leading-8 tracking-tight">Upcoming</h1>
       </div>
       <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
         {movies?.map((movie) => {

@@ -32,7 +32,7 @@ export default async function TopRatedPage({ searchParams }: TopRatedProps) {
           </Button>
         </Link>
 
-        <h1>Top Rated</h1>
+        <h1 className = "font-semibold text-2xl leading-8 tracking-tight">Top Rated</h1>
       </div>
       <div className=" gap-3 pb-4 grid grid-cols-2 md:grid-cols-5">
         {movies?.map((movie) => {

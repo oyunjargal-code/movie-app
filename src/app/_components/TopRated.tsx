@@ -13,7 +13,7 @@ export const TopRated = async ({ movies }: TopRatedProps) => {
   return (
     <div className="w-full h-fit flex flex-col justify-between p-6 max-w-360">
       <div className="flex justify-between m-2">
-        <h1 className="m-2 bold">Top Rated</h1>
+        <h1 className = "font-semibold text-2xl leading-8 tracking-tight">Top Rated</h1>
         <Link href="topRated/?page=1">
           <Button variant={"outline"}>
             See more <ArrowRight />

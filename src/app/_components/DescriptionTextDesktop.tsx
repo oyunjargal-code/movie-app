@@ -1,30 +1,30 @@
+// 
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import Link from "next/link";
+
 type DescriptionTextType = {
   name: string;
   rating: number;
   desc: string;
+  movieId: number;
 };
+
 export const DescriptionTextDesktop = ({
   name,
   rating,
   desc,
+  movieId,
 }: DescriptionTextType) => {
   return (
-    <div className="hidden sm:block md:top-1/4 md:left-1/12 md:w-100 md:absolute z-10  md:text-white">
+    <div className="hidden sm:block md:top-1/4 md:left-1/12 md:w-100 md:absolute z-10 md:text-white">
       <div className="flex md:flex-col justify-between p-2">
         <div>
           <p className="text-sm">Now Playing:</p>
           <p className="text-2xl">{name}</p>
         </div>
         <div className="flex gap-2">
-          <img
-            className="w-[23.3px]
-h-[22.19px] flex"
-            src="./Star.svg"
-            alt="Star"
-          />
+          <img className="w-[23.3px] h-[22.19px] flex" src="./Star.svg" alt="Star" />
           <div className="flex">
             <p className="text-base">{rating}</p>
             <p className="text-base text-[#71717A]">/10</p>
@@ -34,14 +34,14 @@ h-[22.19px] flex"
       <div>
         <p className="p-2 h-fit">{desc}</p>
       </div>
-      {/* <div className="flex gap-2">
-        <div className="ml-2 text-black">
-          <Button>
+      <div className="ml-2">
+        <Link href={`/details/${movieId}`}>
+          <Button variant="outline" className="text-black">
             <Play />
             Watch Trailer
           </Button>
-        </div>
-      </div> */}
+        </Link>
+      </div>
     </div>
   );
 };
